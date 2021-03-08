@@ -2919,6 +2919,16 @@ ul.slick-dots li.slick-active { background-color: #fff; }
   margin: 0 0 12px;
   padding: 12px;
 }
+.login{
+  background: #b7b7b785;
+  width: 500px;
+  height: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+.login .input-log{
+  margin-bottom: 10px;
+}
 .head-admin{
   background: #3c88ca;
   padding: 20px;

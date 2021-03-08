@@ -1,7 +1,9 @@
 var express = require("express");
-
+var bodyParser = require("body-parser");
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var app = express();
 app.use(express.static("public"));
+app.use(bodyParser());
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.listen(5000);
@@ -16,43 +18,36 @@ var config = {
   idleTimeoutMillis: 30000,
 };
 var pool = new pg.Pool(config);
-
-// app.get("/", function (req, res) {
-//   pool.connect(function (err,client, done) {
-//     async function demoAwait()  {
-//       try {
-//       const results1 = await client.query( 'SELECT * FROM event' );
-//       const results2 = await client.query( 'SELECT * FROM bangphai' );
-
-//        return res.json({event: results1, bangphai: results2});
-
-//       } catch ( err ) {
-//         return console.error("error runging query", err);
-//       } finally {
-//         res.render("home");
-        
-
-//       }
-//     }
-
-//   });
-// });
 app.get("/", function (req, res) {
-  pool.connect(function (err, client, done) {
-    if (err) {
-      return console.error("error fetching client from pool", err);
+  async function demoAwait(client) {
+    try {
+      const dataEvent = await client.query( "select * from event" );
+      const dataBangPhai = await client.query( "select * from bangphai" );
+      return {dataEvent, dataBangPhai};
+    } catch ( err ) {
+      console.log(err);
     }
-    client.query("select * from event", function (err, result) {
-      done();
+}
 
-      if (err) {
-        res.end();
-        return console.error("error runging query", err);
-      }
-      res.render("home", { data: result });
-    });
+  pool.connect( async function (err, client, done) {
+    const data2Table = await demoAwait(client);
+    console.log("======== data2Table", data2Table);
+    res.render("home", { data: data2Table });
+    // if (err) {
+    //   return console.error("error fetching client from pool", err);
+    // }
+    // client.query("select * from event", function (err, result) {
+    //   done();
+    //
+    //   if (err) {
+    //     res.end();
+    //     return console.error("error runging query", err);
+    //   }
+    //   res.render("home", { data: result });
+    // });
   });
 });
+
 app.get("/event", function (req, res) {
   pool.connect(function (err, client, done) {
     if (err) {
@@ -86,47 +81,41 @@ app.get("/camnang", function (req, res) {
   });
 });
 app.get("/ct-camnang/:id", function (req, res) {
-  var item = { noidung: "abc" };
+  var item = {'noidung':'abc'};
   console.log(req.params.id);
 
   pool.connect(function (err, client, done) {
     if (err) {
       return console.error("error fetching client from pool", err);
     }
-    client.query(
-      "SELECT * FROM camnang WHERE id=" + req.params.id + " limit 1",
-      function (err, result) {
+    client.query('SELECT * FROM camnang WHERE id='+req.params.id + ' limit 1',function (err, result) {
         done();
         if (err) {
           res.end();
           return console.error("error runging query", err);
         }
 
-        res.render("ct-camnang", { item: result.rows[0] });
-      }
-    );
+        res.render("ct-camnang",{item:result.rows[0]});
+      });
   });
 });
 app.get("/contentevent/:id", function (req, res) {
-  var item = { noidung: "abc" };
+  var item = {'noidung':'abc'};
   console.log(req.params.id);
 
   pool.connect(function (err, client, done) {
     if (err) {
       return console.error("error fetching client from pool", err);
     }
-    client.query(
-      "SELECT * FROM event WHERE id=" + req.params.id + " limit 1",
-      function (err, result) {
+    client.query('SELECT * FROM event WHERE id='+req.params.id + ' limit 1',function (err, result) {
         done();
         if (err) {
           res.end();
           return console.error("error runging query", err);
         }
 
-        res.render("contentevent", { item: result.rows[0] });
-      }
-    );
+        res.render("contentevent",{item:result.rows[0]});
+      });
   });
 });
 app.get("/add", function (req, res) {
@@ -148,36 +137,48 @@ app.get("/login", function (req, res) {
   res.render("login");
 });
 
+
 // trang quản trị
 app.get("/event/admin", function (req, res) {
-  pool.connect(function (err, client, done) {
-    if (err) {
-      return console.error("error fetching client from pool", err);
+  async function demoAwait(client) {
+    try {
+      const dataEvent = await client.query( "select * from event" );
+      const dataBangPhai = await client.query( "select * from bangphai" );
+      return {dataEvent, dataBangPhai};
+    } catch ( err ) {
+      console.log(err);
     }
-    client.query("select * from event", function (err, result) {
-      done();
+}
 
-      if (err) {
-        res.end();
-        return console.error("error runging query", err);
-      }
-      res.render("admin", { data: result });
-    });
+  pool.connect( async function (err, client, done) {
+    const data2Table = await demoAwait(client);
+    console.log("======== data2Table", data2Table);
+    res.render("admin", { data: data2Table });
+    // if (err) {
+    //   return console.error("error fetching client from pool", err);
+    // }
+    // client.query("select * from event", function (err, result) {
+    //   done();
+    //
+    //   if (err) {
+    //     res.end();
+    //     return console.error("error runging query", err);
+    //   }
+    //   res.render("home", { data: result });
+    // });
   });
 });
-app.get("/event/admin", function (req, res) {
+app.post("/login", function (req, res) {
+  const {username, password} = req.body;
   pool.connect(function (err, client, done) {
     if (err) {
       return console.error("error fetching client from pool", err);
     }
-    client.query("select * from camnang", function (err, result) {
-      done();
-
-      if (err) {
-        res.end();
-        return console.error("error runging query", err);
+    client.query(`select * from login where taikhoan='${username}' and matkhau='${password}' limit 1`, function (err, result) {
+      console.log("==== result login", result);
+      if( result.rows.length > 0){
+        res.redirect("/event/admin");
       }
-      res.render("admin", { data: result });
     });
   });
 });
@@ -197,13 +198,11 @@ app.get("/delete/:id", function (req, res) {
           return console.error("error runging query", err);
         }
         res.redirect("/event/admin");
-      }
-    );
+      });
   });
 });
 
-var bodyParser = require("body-parser");
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 var multer = require("multer");
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -223,29 +222,24 @@ app.post("/add", urlencodedParser, function (req, res) {
       if (req.file == undefined) {
         res.send("file chưa đc chọn");
       } else {
+
+
         pool.connect(function (err, client, done) {
           if (err) {
             return console.error("error fetching client from pool", err);
           }
-          var sql =
-            "insert into event(tieude, mota,noidung, image ) values ('" +
-            req.body.tieude +
-            "', '" +
-            req.body.mota +
-            "','" +
-            req.body.noidung +
-            "', '" +
-            req.file.originalname +
-            "')";
-          client.query(sql, function (err, result) {
-            done();
-            if (err) {
-              res.end();
-              return console.error("error runging query", err);
-            }
-            res.redirect("/event/admin");
-          });
+          var sql ="insert into event(tieude, mota,noidung, image ) values ('"+req.body.tieude+"', '"+req.body.mota+"','"+req.body.noidung+"', '"+req.file.originalname+"')";
+          client.query(sql,function (err, result) {
+              done();
+              if (err) {
+                res.end();
+                return console.error("error runging query", err);
+              }
+              res.redirect("/event/admin");
+            });
         });
+
+
       }
     }
   });
@@ -256,13 +250,13 @@ app.post("/edit/:id", function (req, res) {
     if (err) {
       return console.error("error fetching client from pool", err);
     }
-    client.query("SELECT * FROM event WHERE id=" + id, function (err, result) {
-      done();
-      if (err) {
-        res.end();
-        return console.error("error runging query", err);
-      }
-      res.redirect("/event/edit", { data: result.rows[0] });
-    });
+    client.query('SELECT * FROM event WHERE id='+id,function (err, result) {
+        done();
+        if (err) {
+          res.end();
+          return console.error("error runging query", err);
+        }
+        res.redirect("/event/edit",{data:result.rows[0]});
+      });
   });
 });

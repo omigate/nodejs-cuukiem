@@ -33,7 +33,7 @@
 	<div id="siteContainer">
 		<!-- site header -->
 		<header id="siteHeader" class="site-header fix-on-top">
-			
+
 			<div class="sh_toggle-btn">
 				<button class="sh_main-navbar_toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#siteHeaderNavbarCollapse" aria-expanded="false"><i class="ion-navicon"></i></button>
 			</div>
@@ -42,13 +42,13 @@
 					<a href="#">
 					 <img src="assets/img/icon-512.png">
 					</a>
-					
+
 				</div>
 				<div class="right-top">
 					<a href="#"><img src="assets/img/Group69.png"></a>
 					<a href="#"><img src="assets/img/Group68.png"></a>
 				</div>
-				
+
 			</div>
 			<div class="collapse navbar-collapse" id="siteHeaderNavbarCollapse">
 				<div class="sh_main-navbar">
@@ -62,13 +62,13 @@
 								<li><a href="https://www.facebook.com/cuukiemchivuong">Fanpage</a></li>
 								<li><a href="#">Kênh hỗ trợ</a></li>
 							</ul>
-							
-							
+
+
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 		</header>
 		<!-- END site header -->
 
@@ -78,14 +78,14 @@
 
 		<!-- site content -->
 		<div id="siteContent" class="site-content">
-			
+
 		<div class="zone1 section">
 			<div class="section__background">
 				<video autoplay muted loop id="myVideo">
 					<source src="video/bg-video-ckcv.mp4" type="video/mp4">
-				  </video>				
+				  </video>
 			</div>
-			
+
 				<div class="ct-tophead">
 					<div class="container has-mw-on-xs-screen">
 					<div class="col-md-4 col-xs-12">
@@ -135,23 +135,20 @@
 								<div class="tab-content">
 									<div class="tab-pane fade in active" id="tab1default">
 										<ul>
-											<% data.rows.forEach(function(item){ %>
-											<li><a href="/contentevent/<%= item.id %>"><%= item.tieude %></a></li>
+											<% data.dataEvent.rows.forEach(function(item){ %>
+												<li><a href="/contentevent/<%= item.id %>"><%= item.tieude %></a></li>
 											<%})%>
-											
-											
 										</ul>
 									</div>
 									<div class="tab-pane fade" id="tab2default">
 										<ul>
-											<% data.rows.forEach(function(item){ %>
-											<li><a href="/contentevent/<%= item.id %>"><%= item.tieude %></a></li>
+											<% data.dataEvent.rows.forEach(function(item){ %>
+												<li><a href="/contentevent/<%= item.id %>"><%= item.tieude %></a></li>
 											<%})%>
-											
 											
 										</ul>
 									</div>
-									
+
 								</div>
 							</div>
 						</div>
@@ -166,17 +163,17 @@
 			<div class="section ht-home-logo-brands-section py-12">
 				<div class="section__background">
 					<img alt="" class="desktop lazyloaded" src="assets/img/aha.png">
-					
+
 				</div>
 				<div class="container">
 				<div class="section-content">
 					<div class="col-md-3 col-xs-6">
 						<h3>Bí kíp 1</h3>
 						<ul>
-							<% data.rows.forEach(function(item){ %>
-								<li><a href="/contentevent/<%= item.id %>"><%= item.tieude %></a></li>
+							<% data.dataBangPhai.rows.forEach(function(item){ %>
+								<li><a href="/contentbang/<%= item.id %>"><%= item.tieude %></a></li>
 								<%})%>
-							
+
 						</ul>
 					</div>
 					<div class="col-md-3 col-xs-6">
@@ -216,7 +213,7 @@
 						</ul>
 					</div>
 				</div>
-				</div>		
+				</div>
 			</div>
 			<div class="home-single-section ht-homebp-section">
 				<div class="section-content">
@@ -250,7 +247,7 @@
 						</div>
 					</div>
 				</div>
-					
+
 			</div>
 			<div class="section home-single-section ht-video-section ">
 				<div class="section__background">
@@ -267,7 +264,7 @@
 
 					</div>
 				</div>
-					
+
 			</div>
 		</div>
 		<!-- END site content -->
@@ -281,7 +278,7 @@
 	            <h4 class="ci_title">CÔNG TY CỔ PHẦN PHÁT TRIỂN KINH DOANH CÔNG NGHỆ ĐẠI HẢI</h4>
 	            <div class="ci_subtitle">Địa chỉ: Số 2 ngõ 136 phố Nguyễn An Ninh, Phường Tương Mai, Quận Hoàng Mai, Thành phố Hà Nội, Việt Nam</div>
 	            <div class="ci_subtitle">Tổng đài: <b class="color-green-700">0784 022 333</b> (cả T7, CN) - Email: daihai.jsc.co@gmail.com</div>
-	           
+
 	          </div>
 	          <div class="company-register-badge flex-item">
 	            <!-- <img src="stock/icons/dathongbao-bocongthuong.png" alt=""> -->
@@ -289,7 +286,7 @@
         	</div>
         </div>
       </div>
-        
+
     </footer>
     <!-- END Site Footer -->
 
@@ -300,39 +297,39 @@
 		</a>
 		<a href="#" class="vivu-widget-btn-call">
 			<img src="assets/img/Group85.png">
-			
+
 		</a>
 	</div>
 	<div class="vivu-widget-all-app-act-pc">
 		<div class="vivu-widget-btn-act-call">
 			<a href="http://cuukiemchivuong.vn/" class="vivu-widget-btn-open-popup-call">
 				<img alt="nạp thẻ" class="vivu-widget-btn-img-call" src="assets/img/nap-the 1.png">
-                
+
             </a>
 		</div>
-		
+
 		<div class="vivu-widget-btn-act-zalo">
 			<a href="#" target="_blank" href="https://zalo.me/0972688622">
 				<img alt="zalo" class="vivu-widget-btn-img-zalo" src="assets/img/tai-APK 1.png">
-                
+
             </a>
 		</div>
-		
+
 		<div class="vivu-widget-btn-act-mess">
 			<a href="#" target="_blank" href="https://m.me/azvay.bank">
 				<img alt="facebook" class="vivu-widget-btn-img-mess" src="assets/img/Google Play.png">
-               
+
             </a>
 		</div>
-		
+
 		<div class="vivu-widget-btn-act-location">
             <a href="#" target="_blank" rel="nofollow" href="https://g.page/daohan-azvay">
 				<img alt="Bản đồ" class="vivu-widget-btn-img-location" src="assets/img/App Store.png">
-             
+
             </a>
 		</div>
 		<!-- <div class="swing"><img src="assets/img/image6.png"></div> -->
-		
+
 	</div>
 
 
@@ -359,7 +356,7 @@
 		  });
 		  // touchspin
 		  $('.touchspin-form-control').TouchSpin({
-		    // 
+		    //
 		  });
 
 		});

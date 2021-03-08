@@ -21,8 +21,8 @@
     <div class="panel-heading">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab1default" data-toggle="tab">Sự kiện</a></li>
-                <li><a href="#tab2default" data-toggle="tab">Cẩm nang</a></li>
-                
+                <li><a href="#tab2default" data-toggle="tab">Bang phai</a></li>
+
             </ul>
     </div>
     <div class="panel-body">
@@ -39,13 +39,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% data.rows.forEach(function(item){ %>
+                  <% data.dataEvent.rows.forEach(function(item){ %>
                   <tr>
                     <td><%= item.id %></td>
                     <td><%= item.tieude %></td>
                     <td><%= item.mota %></td>
                     <td><img width="200px" src="../uploads/<%= item.image %>"></td>
-                    <td><%= item.noidung %></td>
+                    <td><%- item.noidung %></td>
                     <td>
                       --<a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
                       <a href="/edit/<%= item.id %>">edit</a>
@@ -69,28 +69,28 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% data.rows.forEach(function(item){ %>
+                  <% data.dataBangPhai.rows.forEach(function(item){ %>
                   <tr>
                     <td><%= item.id %></td>
                     <td><%= item.tieude %></td>
                     <td><%= item.mota %></td>
                     <td><img width="200px" src="../uploads/<%= item.image %>"></td>
-                    <td><%= item.noidung %></td>
+                    <td><%- item.noidung %></td>
                     <td>
                       --<a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
-                      <a href="/edit/<%= item.id %>">edit</a>
+                      <!-- <a href="/edit/<%= item.id %>">edit</a> -->
                       --<a href="/add">Thêm</a></td>
                   </tr>
                   <%})%>
                 </tbody>
               </table>
             </div>
-           
+
         </div>
     </div>
 </div>
-  
-  
+
+
 </div>
 
 </body>
