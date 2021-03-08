@@ -9,10 +9,10 @@ app.set("views", "./views");
 app.listen(5000);
 var pg = require("pg");
 var config = {
-  user: "postgres",
-  database: "cuukiemchivuong",
-  password: "postgres",
-  host: "localhost",
+  user: "cuukiem",
+  database: "cuukiem",
+  password: "123456aA",
+  host: "171.244.33.148",
   port: "5432",
   max: "10",
   idleTimeoutMillis: 30000,
