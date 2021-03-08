@@ -19,18 +19,18 @@ var config = {
 };
 var pool = new pg.Pool(config);
 app.get("/", function (req, res) {
-  async function demoAwait(client) {
+  async function demoAwait() {
     try {
-      const dataEvent = await client.query( "select * from event" );
-      const dataBangPhai = await client.query( "select * from bangphai" );
+      const dataEvent = await pool.query( "select * from event" );
+      const dataBangPhai = await pool.query( "select * from bangphai" );
       return {dataEvent, dataBangPhai};
     } catch ( err ) {
       console.log(err);
     }
 }
 
-  pool.connect( async function (err, client, done) {
-    const data2Table = await demoAwait(client);
+  pool.connect( async function (err, done) {
+    const data2Table = await demoAwait();
     console.log("======== data2Table", data2Table);
     res.render("home", { data: data2Table });
     // if (err) {
