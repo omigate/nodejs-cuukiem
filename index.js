@@ -8,6 +8,7 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.listen(5000);
 var pg = require("pg");
+// kết nối database
 var config = {
   user: "cuukiem",
   database: "cuukiem",
