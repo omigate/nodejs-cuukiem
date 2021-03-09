@@ -47,14 +47,14 @@
                     <td><img width="200px" src="/uploads/<%= item.image %>"></td>
                     <td><%- item.noidung %></td>
                     <td>
-                      --<a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
-                      <a href="/edit/<%= item.id %>">edit</a>
-                      --<a href="/add">Thêm</a></td>
+                      <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
+                      <!-- <a href="/edit/<%= item.id %>">edit</a> -->
+                      <!-- --<a href="/add">Thêm</a></td> -->
                   </tr>
 
                   <%})%>
                 </tbody>
-                --<a href="/add">Thêm</a></td>
+                --<a href="/add">THÊM MỚI</a></td>
               </table>
             </div>
             <div class="tab-pane fade" id="tab2default">
@@ -78,8 +78,8 @@
                     <td><%- item.noidung %></td>
                     <td>
                       --<a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
-                      <!-- <a href="/edit/<%= item.id %>">edit</a> -->
-                      --<a href="/add">Thêm</a></td>
+           
+                     
                   </tr>
                   <%})%>
                 </tbody>

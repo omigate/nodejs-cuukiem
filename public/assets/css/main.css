@@ -2992,6 +2992,10 @@ ul.slick-dots li.slick-active { background-color: #fff; }
   position: relative;
   top: 65.5% !important;
 }
+.ct-tophead .tab-content{
+  height: 195px;
+  overflow: auto;
+}
 .zone1 .panel-body{
   background: #0000004f;
   height: 228px;

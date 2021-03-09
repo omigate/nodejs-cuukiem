@@ -36,18 +36,6 @@ app.get("/", function (req, res) {
     const data2Table = await demoAwait();
     console.log("======== data2Table", data2Table);
     res.render("home", { data: data2Table });
-    // if (err) {
-    //   return console.error("error fetching client from pool", err);
-    // }
-    // client.query("select * from event", function (err, result) {
-    //   done();
-    //
-    //   if (err) {
-    //     res.end();
-    //     return console.error("error runging query", err);
-    //   }
-    //   res.render("home", { data: result });
-    // });
   });
 });
 
@@ -64,22 +52,6 @@ app.get("/event", function (req, res) {
         return console.error("error runging query", err);
       }
       res.render("event", { data: result });
-    });
-  });
-});
-app.get("/camnang", function (req, res) {
-  pool.connect(function (err, client, done) {
-    if (err) {
-      return console.error("error fetching client from pool", err);
-    }
-    client.query("select * from camnang", function (err, result) {
-      done();
-
-      if (err) {
-        res.end();
-        return console.error("error runging query", err);
-      }
-      res.render("camnang", { data: result });
     });
   });
 });
@@ -151,6 +123,12 @@ app.get("/event", function (req, res) {
 });
 app.get("/camnang", function (req, res) {
   res.render("camnang");
+});
+app.get("/tanthu", function (req, res) {
+  res.render("tanthu");
+});
+app.get("/huongdannap", function (req, res) {
+  res.render("huongdannap");
 });
 app.get("/ct-camnang", function (req, res) {
   res.render("ct-camnang");
