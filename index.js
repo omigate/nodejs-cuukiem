@@ -7,6 +7,8 @@ app.use(bodyParser());
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.listen(5000);
+app.use("/uploads",express.static(__dirname + '/../uploads'));
+
 var pg = require("pg");
 // kết nối database
 var config = {
@@ -119,6 +121,25 @@ app.get("/contentevent/:id", function (req, res) {
       });
   });
 });
+app.get("/contentbang/:id", function (req, res) {
+  var item = {'noidung':'abc'};
+  console.log(req.params.id);
+
+  pool.connect(function (err, client, done) {
+    if (err) {
+      return console.error("error fetching client from pool", err);
+    }
+    client.query('SELECT * FROM bangphai WHERE id='+req.params.id + ' limit 1',function (err, result) {
+        done();
+        if (err) {
+          res.end();
+          return console.error("error runging query", err);
+        }
+
+        res.render("contentbang",{item:result.rows[0]});
+      });
+  });
+});
 app.get("/add", function (req, res) {
   res.render("add");
 });
@@ -136,6 +157,9 @@ app.get("/ct-camnang", function (req, res) {
 });
 app.get("/login", function (req, res) {
   res.render("login");
+});
+app.get("/contentbang", function (req, res) {
+  res.render("contentbang");
 });
 
 
@@ -207,7 +231,7 @@ app.get("/delete/:id", function (req, res) {
 var multer = require("multer");
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./public/uploads");
+    cb(null, __dirname + '/../uploads');
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
