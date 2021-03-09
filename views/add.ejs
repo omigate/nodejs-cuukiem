@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="/assets/css/main.css">
 	<link rel="stylesheet" href="/assets/css/theme.css">
   <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
-
+  <script src="../public/ckeditor/ckeditor.js"></script>
+	<script src="../public/ckfinder/ckfinder.js"></script>
 </head>
 <body>
 
@@ -30,8 +31,10 @@
           <input type="file" class="form-control" id="uploadfile" name="uploadfile">
         </div>
         <textarea name="noidung" id="noidung"></textarea>
+   
           <script>
               CKEDITOR.replace( 'noidung' );
+             
           </script>
     
     <button type="submit" class="ma-0 btn btn-default">Thêm mới</button>

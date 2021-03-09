@@ -9,6 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/assets/css/main.css">
 	<link rel="stylesheet" href="/assets/css/theme.css">
+  
 </head>
 <body>
   
@@ -22,9 +23,11 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab1default" data-toggle="tab">Sự kiện</a></li>
                 <li><a href="#tab2default" data-toggle="tab">Bang phai</a></li>
+                <li><a href="#tab3default" data-toggle="tab">Cẩm nang</a></li>
 
             </ul>
     </div>
+    
     <div class="panel-body">
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tab1default">
@@ -49,12 +52,12 @@
                     <td>
                       <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
                       <!-- <a href="/edit/<%= item.id %>">edit</a> -->
-                      <!-- --<a href="/add">Thêm</a></td> -->
+                      <a href="/add">Thêm</a></td> 
                   </tr>
 
                   <%})%>
                 </tbody>
-                --<a href="/add">THÊM MỚI</a></td>
+                
               </table>
             </div>
             <div class="tab-pane fade" id="tab2default">
@@ -63,8 +66,6 @@
                   <tr>
                     <th>ID</th>
                     <th>Tiêu đề</th>
-                    <th>Mô tả</th>
-                    <th>Hình ảnh</th>
                     <th>Nội dung</th>
                   </tr>
                 </thead>
@@ -73,18 +74,18 @@
                   <tr>
                     <td><%= item.id %></td>
                     <td><%= item.tieude %></td>
-                    <td><%= item.mota %></td>
-                    <td><img width="200px" src="../uploads/<%= item.image %>"></td>
+                    
                     <td><%- item.noidung %></td>
                     <td>
-                      --<a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
-           
+                    <a onclick="return confirm('bạn muốn xóa')" href="/delete1/<%= item.id %>">Xóa</a>--
+                      <a href="/addbang">Thêm</a></td> 
                      
                   </tr>
                   <%})%>
                 </tbody>
               </table>
             </div>
+            
 
         </div>
     </div>

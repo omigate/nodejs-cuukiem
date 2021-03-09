@@ -26,6 +26,7 @@ app.get("/", function (req, res) {
     try {
       const dataEvent = await pool.query( "select * from event" );
       const dataBangPhai = await pool.query( "select * from bangphai" );
+     
       return {dataEvent, dataBangPhai};
     } catch ( err ) {
       console.log(err);
@@ -114,6 +115,9 @@ app.get("/contentbang/:id", function (req, res) {
 });
 app.get("/add", function (req, res) {
   res.render("add");
+});
+app.get("/addbang", function (req, res) {
+  res.render("addbang");
 });
 app.get("/edit", function (req, res) {
   res.render("edit");
@@ -204,6 +208,24 @@ app.get("/delete/:id", function (req, res) {
       });
   });
 });
+app.get("/delete1/:id", function (req, res) {
+  pool.connect(function (err, client, done) {
+    if (err) {
+      return console.error("error fetching client from pool", err);
+    }
+    client.query(
+      "delete from bangphai where id =" + req.params.id,
+      function (err, result) {
+        done();
+
+        if (err) {
+          res.end();
+          return console.error("error runging query", err);
+        }
+        res.redirect("/event/admin");
+      });
+  });
+});
 
 
 var multer = require("multer");
@@ -225,8 +247,6 @@ app.post("/add", urlencodedParser, function (req, res) {
       if (req.file == undefined) {
         res.send("file chưa đc chọn");
       } else {
-
-
         pool.connect(function (err, client, done) {
           if (err) {
             return console.error("error fetching client from pool", err);
@@ -245,6 +265,24 @@ app.post("/add", urlencodedParser, function (req, res) {
 
       }
     }
+  });
+});
+app.post("/addbang", function (req, res) {
+  upload(req, res, function (err) {
+        pool.connect(function (err, client, done) {
+          if (err) {
+            return console.error("error fetching client from pool", err);
+          }
+          var sql ="insert into bangphai(tieude, noidung ) values ('"+req.body.tieude+"', '"+req.body.noidung+"')";
+          client.query(sql,function (err, result) {
+              done();
+              if (err) {
+                res.end();
+                return console.error("error runging query", err);
+              }
+              res.redirect("/event/admin");
+            });
+        });
   });
 });
 app.post("/edit/:id", function (req, res) {
