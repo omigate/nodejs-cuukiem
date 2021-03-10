@@ -3143,7 +3143,7 @@ ul.slick-dots li.slick-active { background-color: #fff; }
 }
 .vivu-widget-call-action {
   position: fixed;
-    left: 10px;
+    left: 0px;
     bottom: 10%;
     padding: 20px;
     height: 311px;

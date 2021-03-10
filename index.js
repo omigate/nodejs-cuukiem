@@ -26,8 +26,9 @@ app.get("/", function (req, res) {
     try {
       const dataEvent = await pool.query( "select * from event" );
       const dataBangPhai = await pool.query( "select * from bangphai" );
-     
-      return {dataEvent, dataBangPhai};
+      const dataNews = await pool.query( "select * from news" );
+      const dataCamNang = await pool.query( "select * from camnang" );
+      return {dataEvent, dataBangPhai, dataNews, dataCamNang};
     } catch ( err ) {
       console.log(err);
     }
@@ -53,6 +54,22 @@ app.get("/event", function (req, res) {
         return console.error("error runging query", err);
       }
       res.render("event", { data: result });
+    });
+  });
+});
+app.get("/camnang", function (req, res) {
+  pool.connect(function (err, client, done) {
+    if (err) {
+      return console.error("error fetching client from pool", err);
+    }
+    client.query("select * from camnang", function (err, result) {
+      done();
+
+      if (err) {
+        res.end();
+        return console.error("error runging query", err);
+      }
+      res.render("camnang", { data: result });
     });
   });
 });
@@ -151,7 +168,9 @@ app.get("/event/admin", function (req, res) {
     try {
       const dataEvent = await client.query( "select * from event" );
       const dataBangPhai = await client.query( "select * from bangphai" );
-      return {dataEvent, dataBangPhai};
+      const dataNews = await pool.query( "select * from news" );
+      const dataCamNang = await pool.query( "select * from camnang" );
+      return {dataEvent, dataBangPhai,dataNews,dataCamNang};
     } catch ( err ) {
       console.log(err);
     }
