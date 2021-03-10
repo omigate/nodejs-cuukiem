@@ -20,6 +20,15 @@ const config = {
     idleTimeoutMillis: 30000,
 };
 const pool = new pg.Pool(config);
+
+//shutdown hook
+process.on('SIGINT', function() {
+    console.log("shutdown app")
+    pool.end(function(err) {
+        process.exit(err ? 1 : 0);
+    });
+});
+
 app.get("/healthcheck", (req, res) => {
     res.send('{"status": "ok"}')
 });
