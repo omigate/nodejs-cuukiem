@@ -9,7 +9,7 @@ app.set("views", "./views");
 app.listen(5000);
 app.use("/uploads", express.static(__dirname + "/../uploads"));
 const pg = require("pg");
-// kết nối database
+//database config
 const config = {
     user: "cuukiem",
     database: "cuukiem",
