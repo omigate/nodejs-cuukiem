@@ -133,6 +133,12 @@ app.get("/contentbang/:id", function (req, res) {
 app.get("/add", function (req, res) {
   res.render("add");
 });
+app.get("/hinhanh", function (req, res) {
+  res.render("hinhanh");
+});
+app.get("/addimage", function (req, res) {
+  res.render("addimage");
+});
 app.get("/addbang", function (req, res) {
   res.render("addbang");
 });
@@ -144,6 +150,12 @@ app.get("/event", function (req, res) {
 });
 app.get("/camnang", function (req, res) {
   res.render("camnang");
+});
+app.get("/addcamnang", function (req, res) {
+  res.render("addcamnang");
+});
+app.get("/addnews", function (req, res) {
+  res.render("addnews");
 });
 app.get("/tanthu", function (req, res) {
   res.render("tanthu");
@@ -170,7 +182,8 @@ app.get("/event/admin", function (req, res) {
       const dataBangPhai = await client.query( "select * from bangphai" );
       const dataNews = await pool.query( "select * from news" );
       const dataCamNang = await pool.query( "select * from camnang" );
-      return {dataEvent, dataBangPhai,dataNews,dataCamNang};
+      const dataHinhAnh = await pool.query( "select * from hinhanh" );
+      return {dataEvent, dataBangPhai,dataNews,dataCamNang, dataHinhAnh};
     } catch ( err ) {
       console.log(err);
     }
@@ -245,6 +258,42 @@ app.get("/delete1/:id", function (req, res) {
       });
   });
 });
+app.get("/delete2/:id", function (req, res) {
+  pool.connect(function (err, client, done) {
+    if (err) {
+      return console.error("error fetching client from pool", err);
+    }
+    client.query(
+      "delete from camnang where id =" + req.params.id,
+      function (err, result) {
+        done();
+
+        if (err) {
+          res.end();
+          return console.error("error runging query", err);
+        }
+        res.redirect("/event/admin");
+      });
+  });
+});
+app.get("/delete3/:id", function (req, res) {
+  pool.connect(function (err, client, done) {
+    if (err) {
+      return console.error("error fetching client from pool", err);
+    }
+    client.query(
+      "delete from news where id =" + req.params.id,
+      function (err, result) {
+        done();
+
+        if (err) {
+          res.end();
+          return console.error("error runging query", err);
+        }
+        res.redirect("/event/admin");
+      });
+  });
+});
 
 
 var multer = require("multer");
@@ -304,7 +353,62 @@ app.post("/addbang", function (req, res) {
         });
   });
 });
-app.post("/edit/:id", function (req, res) {
+app.post("/addnews", function (req, res) {
+  upload(req, res, function (err) {
+        pool.connect(function (err, client, done) {
+          if (err) {
+            return console.error("error fetching client from pool", err);
+          }
+          var sql ="insert into news(tieude, noidung ) values ('"+req.body.tieude+"', '"+req.body.noidung+"')";
+          client.query(sql,function (err, result) {
+              done();
+              if (err) {
+                res.end();
+                return console.error("error runging query", err);
+              }
+              res.redirect("/event/admin");
+            });
+        });
+  });
+});
+app.post("/addcamnang", function (req, res) {
+  upload(req, res, function (err) {
+        pool.connect(function (err, client, done) {
+          if (err) {
+            return console.error("error fetching client from pool", err);
+          }
+          var sql ="insert into camnang(tieude, mota,noidung, image ) values ('"+req.body.tieude+"', '"+req.body.mota+"','"+req.body.noidung+"', '"+req.file.originalname+"')";
+          client.query(sql,function (err, result) {
+              done();
+              if (err) {
+                res.end();
+                return console.error("error runging query", err);
+              }
+              res.redirect("/event/admin");
+            });
+        });
+  });
+});
+app.post("/addimage", function (req, res) {
+  upload(req, res, function (err) {
+        pool.connect(function (err, client, done) {
+          if (err) {
+            return console.error("error fetching client from pool", err);
+          }
+          var sql ="insert into hinhanh(hinhanh ) values ( '"+req.file.originalname+"')";
+          client.query(sql,function (err, result) {
+              done();
+              if (err) {
+                res.end();
+                return console.error("error runging query", err);
+              }
+              res.redirect("/event/admin");
+            });
+        });
+  });
+});
+
+app.get("/edit/:id", function (req, res) {
   var id = req.params.id;
   pool.connect(function (err, client, done) {
     if (err) {
@@ -316,7 +420,36 @@ app.post("/edit/:id", function (req, res) {
           res.end();
           return console.error("error runging query", err);
         }
-        res.redirect("/event/edit",{data:result.rows[0]});
+        res.render("edit",{data:result.rows[0]});
       });
+  });
+});
+
+app.post("/edit/:id", urlencodedParser, function (req, res) {
+  upload(req, res, function (err) {
+    if (err) {
+      res.send("lỗi");
+    } else {
+      if (req.file == undefined) {
+        res.send("file chưa đc chọn");
+      } else {
+        pool.connect(function (err, client, done) {
+          if (err) {
+            return console.error("error fetching client from pool", err);
+          }
+          var sql ="insert into event(tieude, mota,noidung, image ) values ('"+req.body.tieude+"', '"+req.body.mota+"','"+req.body.noidung+"', '"+req.file.originalname+"')";
+          client.query(sql,function (err, result) {
+              done();
+              if (err) {
+                res.end();
+                return console.error("error runging query", err);
+              }
+              res.redirect("/event/admin");
+            });
+        });
+
+
+      }
+    }
   });
 });

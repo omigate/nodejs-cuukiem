@@ -24,7 +24,8 @@
                 <li class="active"><a href="#tab1default" data-toggle="tab">Sự kiện</a></li>
                 <li><a href="#tab2default" data-toggle="tab">Bang phai</a></li>
                 <li><a href="#tab3default" data-toggle="tab">Cẩm nang</a></li>
-                <li><a href="#tab3default" data-toggle="tab">Tin tức mới nhất</a></li>
+                <li><a href="#tab4default" data-toggle="tab">Tin tức mới nhất</a></li>
+                <li><a href="#tab5default" data-toggle="tab">Tải hình ảnh lên</a></li>
 
             </ul>
     </div>
@@ -86,7 +87,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="tab-pane fade in active" id="tab3default">
+            <div class="tab-pane fade " id="tab3default">
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -108,7 +109,7 @@
                     <td>
                       <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
                       <!-- <a href="/edit/<%= item.id %>">edit</a> -->
-                      <a href="/add">Thêm</a></td> 
+                      <a href="/addcamnang">Thêm</a></td> 
                   </tr>
 
                   <%})%>
@@ -116,14 +117,13 @@
                 
               </table>
             </div>
-            <div class="tab-pane fade in active" id="tab4default">
+            <div class="tab-pane fade " id="tab4default">
               <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>ID</th>
                     <th>Tiêu đề</th>
-                    <th>Mô tả</th>
-                    <th>Hình ảnh</th>
+                   
                     <th>Nội dung</th>
                   </tr>
                 </thead>
@@ -132,13 +132,39 @@
                     <tr>
                     <td><%= item.id %></td>
                     <td><%= item.tieude %></td>
-                    <td><%= item.mota %></td>
-                    <td><img width="200px" src="/uploads/<%= item.image %>"></td>
+                   
                     <td><%- item.noidung %></td>
                     <td>
                       <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
                       <!-- <a href="/edit/<%= item.id %>">edit</a> -->
-                      <a href="/add">Thêm</a></td> 
+                      <a href="/addnews">Thêm</a></td> 
+                  </tr>
+
+                  <%})%>
+                </tbody>
+                
+              </table>
+            </div>
+            <div class="tab-pane fade  " id="tab5default">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                  
+                    <th>Hình ảnh</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <% data.dataHinhAnh.rows.forEach(function(item){ %>
+                    <tr>
+                      <td><%= item.id %></td>
+                    <td><img width="200px" src="/uploads/<%= item.hinhanh %>"></td>
+                   
+                    <td>
+                      <!-- <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a> -->
+                      <!-- <a href="/edit/<%= item.id %>">edit</a> -->
+                      <a href="/addimage">Thêm</a></td> 
                   </tr>
 
                   <%})%>
