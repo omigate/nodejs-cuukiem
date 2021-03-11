@@ -155,6 +155,9 @@ app.get("/login", function (req, res) {
 app.get("/contentbang", function (req, res) {
     res.render("contentbang");
 });
+app.get("/ctnews", function (req, res) {
+    res.render("ctnews");
+});
 // trang quản trị
 app.get("/event/admin", function (req, res) {
     async function demoAwait() {
