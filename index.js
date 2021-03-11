@@ -9,8 +9,8 @@ app.set("views", "./views");
 app.listen(5000);
 app.use("/uploads", express.static(__dirname + "/../uploads"));
 
-app.use(express.json({limit: '2GB'}));
-app.use(express.urlencoded({limit: '2GB'}));
+app.use(express.json({limit: '1000mb'}));
+app.use(express.urlencoded({limit: '1000mb'}));
 
 const pg = require("pg");
 //database config
