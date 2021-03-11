@@ -1,6 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({extended: false});
+// Import routes
+// const indexRoutes = require("./router/index.routes");
+// app.use(indexRoutes);
 const app = express();
 app.use(express.static("public"));
 app.use(bodyParser());
@@ -10,6 +13,7 @@ app.listen(5000);
 app.use("/uploads", express.static(__dirname + "/../uploads"));
 app.use(express.json({limit: '900mb'}));
 app.use(express.urlencoded({limit: '900mb'}));
+
 const pg = require("pg");
 //database config
 const config = {
@@ -23,8 +27,6 @@ const config = {
 };
 const pool = new pg.Pool(config);
 //shutdown hook
-
-
 
 process.on('SIGINT', function() {
     console.log("shutdown app")
@@ -411,3 +413,4 @@ app.post("/edit/:id", urlencodedParser, function (req, res) {
         }
     });
 });
+
