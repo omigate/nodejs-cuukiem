@@ -8,10 +8,8 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.listen(5000);
 app.use("/uploads", express.static(__dirname + "/../uploads"));
-
 app.use(express.json({limit: '900mb'}));
 app.use(express.urlencoded({limit: '900mb'}));
-
 const pg = require("pg");
 //database config
 const config = {
@@ -24,8 +22,10 @@ const config = {
     idleTimeoutMillis: 30000,
 };
 const pool = new pg.Pool(config);
-
 //shutdown hook
+
+
+
 process.on('SIGINT', function() {
     console.log("shutdown app")
     pool.end(function(err) {
