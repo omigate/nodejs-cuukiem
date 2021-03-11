@@ -113,6 +113,19 @@ app.get("/contentbang/:id", function (req, res) {
         }
     );
 });
+app.get("/ctnews/:id", function (req, res) {
+    console.log(req.params.id);
+    pool.query(
+        "SELECT * FROM bangphai WHERE id=" + req.params.id + " limit 1",
+        function (err, result) {
+            if (err) {
+                res.end();
+                return console.error("error runging query", err);
+            }
+            res.render("ctnews", {item: result.rows[0]});
+        }
+    );
+});
 app.get("/add", function (req, res) {
     res.render("add");
 });
