@@ -54,10 +54,10 @@
                     <td><%= item.tieude %></td>
                     <td><%= item.mota %></td>
                     <td><img width="200px" src="/uploads/<%= item.image %>"></td>
-                    <td><%- item.noidung %></td>
+                    <td><div style="height: 400px; overflow: auto;"><%- item.noidung %></div></td>
                     <td>
                       <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
-                      <!-- <a href="/edit/<%= item.id %>">edit</a> -->
+                      <a href="/edit/<%= item.id %>">edit</a>
                       </td> 
                   </tr>
 
@@ -82,7 +82,7 @@
                     <td><%= item.id %></td>
                     <td><%= item.tieude %></td>
                     
-                    <td><%- item.noidung %></td>
+                    <td><div style="height: 400px; overflow: auto;"><%- item.noidung %></div></td>
                     <td>
                     <a onclick="return confirm('bạn muốn xóa')" href="/delete1/<%= item.id %>">Xóa</a>--
                   </td> 
@@ -111,7 +111,7 @@
                     <td><%= item.tieude %></td>
                     <td><%= item.mota %></td>
                     <td><img width="200px" src="/uploads/<%= item.image %>"></td>
-                    <td><%- item.noidung %></td>
+                    <td><div style="height: 400px; overflow: auto;"><%- item.noidung %></div></td>
                     <td>
                       <a onclick="return confirm('bạn muốn xóa')" href="/delete2/<%= item.id %>">Xóa</a>
                       <!-- <a href="/edit/<%= item.id %>">edit</a> -->
@@ -141,7 +141,7 @@
                     <td><%= item.id %></td>
                     <td><%= item.tieude %></td>
                    
-                    <td><%- item.noidung %></td>
+                    <td><div style="height: 400px; overflow: auto;"><%- item.noidung %></div></td>
                     <td>
                       <a onclick="return confirm('bạn muốn xóa')" href="/delete3/<%= item.id %>">Xóa</a>
                       <!-- <a href="/edit/<%= item.id %>">edit</a> -->

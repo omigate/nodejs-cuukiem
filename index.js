@@ -156,6 +156,12 @@ app.get("/addnews", function (req, res) {
 app.get("/tanthu", function (req, res) {
     res.render("tanthu");
 });
+app.get("/thuvien", function (req, res) {
+    res.render("thuvien");
+});
+app.get("/hotro", function (req, res) {
+    res.render("hotro");
+});
 app.get("/huongdannap", function (req, res) {
     res.render("huongdannap");
 });
