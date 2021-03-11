@@ -18,6 +18,7 @@
     <!-- <button type="submit">Log Out</button> -->
   </form>
   <h3 class="head-admin text-center">Cửu kiếm chi vương</h3>
+ 
   <div class="panel with-nav-tabs panel-default">
     <div class="panel-heading">
             <ul class="nav nav-tabs">
@@ -30,9 +31,12 @@
             </ul>
     </div>
     
+    
     <div class="panel-body">
+       
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tab1default">
+              <a style=" background: #3c88ca;padding: 10px;line-height: 57px;color: #fff;" href="/add">THÊM MỚI</a></td>
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -54,7 +58,7 @@
                     <td>
                       <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
                       <!-- <a href="/edit/<%= item.id %>">edit</a> -->
-                      <a href="/add">Thêm</a></td> 
+                      </td> 
                   </tr>
 
                   <%})%>
@@ -63,6 +67,7 @@
               </table>
             </div>
             <div class="tab-pane fade" id="tab2default">
+              <a style=" background: #3c88ca;padding: 10px;line-height: 57px;color: #fff;" href="/addbang">THÊM MỚI</a>
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -80,7 +85,7 @@
                     <td><%- item.noidung %></td>
                     <td>
                     <a onclick="return confirm('bạn muốn xóa')" href="/delete1/<%= item.id %>">Xóa</a>--
-                      <a href="/addbang">Thêm</a></td> 
+                  </td> 
                      
                   </tr>
                   <%})%>
@@ -88,6 +93,7 @@
               </table>
             </div>
             <div class="tab-pane fade " id="tab3default">
+              <a style=" background: #3c88ca;padding: 10px;line-height: 57px;color: #fff;" href="/addcamnang">THÊM MỚI</a>
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -109,7 +115,7 @@
                     <td>
                       <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
                       <!-- <a href="/edit/<%= item.id %>">edit</a> -->
-                      <a href="/addcamnang">Thêm</a></td> 
+                      </td> 
                   </tr>
 
                   <%})%>
@@ -118,6 +124,8 @@
               </table>
             </div>
             <div class="tab-pane fade " id="tab4default">
+              <a style=" background: #3c88ca;padding: 10px;line-height: 57px;color: #fff;" href="/addnews">THÊM MỚI</a>
+
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -137,7 +145,7 @@
                     <td>
                       <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a>
                       <!-- <a href="/edit/<%= item.id %>">edit</a> -->
-                      <a href="/addnews">Thêm</a></td> 
+                     </td> 
                   </tr>
 
                   <%})%>
@@ -146,6 +154,8 @@
               </table>
             </div>
             <div class="tab-pane fade  " id="tab5default">
+              <a style=" background: #3c88ca;padding: 10px;line-height: 57px;color: #fff;" href="/addimage">THÊM MỚI</a>
+
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -164,7 +174,7 @@
                     <td>
                       <!-- <a onclick="return confirm('bạn muốn xóa')" href="/delete/<%= item.id %>">Xóa</a> -->
                       <!-- <a href="/edit/<%= item.id %>">edit</a> -->
-                      <a href="/addimage">Thêm</a></td> 
+                      </td> 
                   </tr>
 
                   <%})%>
