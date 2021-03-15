@@ -2795,6 +2795,31 @@ ul.slick-dots li.slick-active { background-color: #fff; }
     background-position: center;
     background-size: 100%;
 }
+.monphai-video {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.desktop {
+  display: flex;
+}
+.monphai-video .frame-video {
+  height: 100%;
+  width: 1200px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+.monphai-video .frame-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-bg{
+  width: 50%;
+}
 .logo{
   display: none;
 }
