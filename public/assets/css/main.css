@@ -2983,7 +2983,7 @@ ul.slick-dots li.slick-active { background-color: #fff; }
 }
 .ht-article-preview-card .card-content .article-title a {
   color: #3A170C;
-} 
+}
 
 .ht-article-preview-card .card-content .article-meta {
   margin: 6px 0;
@@ -3161,7 +3161,7 @@ ul.slick-dots li.slick-active { background-color: #fff; }
 .ht-video-section{
   height: 763px;
   padding-top: 170px !important;
-    
+
 }
 .ht-video-section .section-content{
   padding-top: 143px;
@@ -3204,6 +3204,9 @@ ul.slick-dots li.slick-active { background-color: #fff; }
   padding: 0 44px !important;
 }
 @media (max-width: 768px) {
+  .background{
+    height:220px !important;
+  }
   .pd-44{
     padding: 0 !important;
   }
@@ -3265,7 +3268,7 @@ ul.slick-dots li.slick-active { background-color: #fff; }
     background-size: cover;
     padding-top: 145px !important;
     overflow: hidden;
-    
+
   }
   .logo{
     display: block;
