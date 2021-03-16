@@ -2765,11 +2765,16 @@ input[type="text"], input[type="number"], input[type="search"], input[type="date
 
 .slick-initialized { display: block !important; }
 
-ul.slick-dots { display: block; position: absolute; bottom: 12px; left: 50%; z-index: 120; padding: 0; margin: 0; font-size: 0; line-height: 12px; -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -webkit-transform: translateX(-50%); transform: translateX(-50%); }
-ul.slick-dots li { display: inline-block; vertical-align: top; margin: 0 2px; width: 12px; height: 12px; background-color: rgba(255, 255, 255, 0.4); border: 1px solid #fff; cursor: pointer; }
-ul.slick-dots li:hover { background-color: rgba(255, 255, 255, 0.6); }
+ul.slick-dots { display: block; position: absolute; bottom: 12px; left: 75%; z-index: 120; padding: 0; margin: 0; font-size: 0; line-height: 12px; -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+ul.slick-dots li { display: inline-block;
+  vertical-align: top;
+  margin: 0 2px;
+  width: 83px;
+  height: 83px;
+  background: url(../img/dotac.png) no-repeat; }
+
 ul.slick-dots li button { display: none; }
-ul.slick-dots li.slick-active { background-color: #fff; }
+ul.slick-dots li.slick-active { background: url(../img/dot1.png) no-repeat; }
 
 .slick-list { z-index: 100; }
 
@@ -2818,7 +2823,7 @@ ul.slick-dots li.slick-active { background-color: #fff; }
   object-fit: cover;
 }
 .video-bg{
-  width: 50%;
+  width: 70%;
 }
 .logo{
   display: none;
@@ -3204,6 +3209,9 @@ ul.slick-dots li.slick-active { background-color: #fff; }
   padding: 0 44px !important;
 }
 @media (max-width: 768px) {
+  ul.slick-dots{
+    display: none !important;
+  }
   .background{
     height:220px !important;
   }
@@ -3286,4 +3294,5 @@ ul.slick-dots li.slick-active { background-color: #fff; }
   .section__background{
     display: none;
   }
+  
 }

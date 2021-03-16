@@ -1668,7 +1668,7 @@
         var _ = this;
 
         _.autoPlay();
-        _.options.autoplay = true;
+        _.options.autoplay = false;
         _.paused = false;
         _.focussed = false;
         _.interrupted = false;

@@ -89,7 +89,7 @@
 					<div class="col-md-4 col-xs-12">
 						<div class="ht-home-single-section ht-home-carousel-section mb-12 ">
 							<div class="section-content">
-								<div class="ht-item-slick ht-home-carousel-card-slick has-slick-arrow-type-01">
+								<div class="ht-item-slick ht-home-carousel-card-slick1 has-slick-arrow-type-01">
 									<div class="single-col">
 										<a href="#" class="ht-carousel-item-card block">
 											<div class="ht-rectangle ratio-31 bg-color-grey-200">
@@ -224,7 +224,17 @@
 							<a href="#" class="ht-carousel-item-card block">
 								<div class="ht-rectangle ratio-31 bg-color-grey-200">
 									<div class="ht-inner">
-										<img src="https://cuukiemchivuong.com.vn/assets/img/thusinh.png" alt="" class="w-100pct h-100pct ojf-cover">
+										<div class="monphai-container">
+											<div class="monphai-video desktop desktop">
+												<img class="video-bg lazyloaded" src="assets/img/dote.png">
+												<div class="frame-video">
+												
+													<video  class="desktop lazyloading" autoplay="true" muted="" loop="" playsinline="" controls autoplay>
+														<source src="video/video1.mp4" type="video/mp4">
+													  </video>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</a>
@@ -233,7 +243,17 @@
 							<a href="#" class="ht-carousel-item-card block">
 								<div class="ht-rectangle ratio-31 bg-color-grey-200">
 									<div class="ht-inner">
-										<img src="https://cuukiemchivuong.com.vn/assets/img/dote.png" alt="" class="w-100pct h-100pct ojf-cover">
+										<div class="monphai-container">
+											<div class="monphai-video desktop desktop">
+												<img class="video-bg lazyloaded" src="assets/img/thusinh.png">
+												<div class="frame-video">
+												
+													<video  class="desktop lazyloading" autoplay="true" muted="" loop="" playsinline="" controls autoplay>
+														<source src="video/video2.mp4" type="video/mp4">
+													  </video>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</a>
@@ -242,7 +262,17 @@
 							<a href="#" class="ht-carousel-item-card block">
 								<div class="ht-rectangle ratio-31 bg-color-grey-200">
 									<div class="ht-inner">
-										<img src="https://cuukiemchivuong.com.vn/assets/img/thuonglinh.png" alt="" class="w-100pct h-100pct ojf-cover">
+										<div class="monphai-container">
+											<div class="monphai-video desktop desktop">
+												<img class="video-bg lazyloaded" src="assets/img/thuonglinh.png">
+												<div class="frame-video">
+												
+													<video  class="desktop lazyloading" autoplay="true" muted="" loop="" playsinline="" controls autoplay>
+														<source src="video/video3.mp4" type="video/mp4">
+													  </video>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</a>
@@ -289,11 +319,16 @@
         	</div>
         </div>
       </div>
-
     </footer>
     <!-- END Site Footer -->
-
 	</div>
+	<!-- <a href="tel:1900633313" class="suntory-alo-phone center-left suntory-alo-green " id="suntory-alo-phoneIcon">
+		<div class="suntory-alo-ph-img-circle"><i class="fa fa-phone"></i></div>
+	</a>
+	<a href="http://cuukiemchivuong.vn/">
+		<img src="https://cuukiemchivuong.com.vn/assets/img/GooglePlay.png">
+	</a>
+	<a href="http://cuukiemchivuong.vn/"><img src="https://cuukiemchivuong.com.vn/assets/img/GooglePlay.png"></a> -->
 	<div class="vivu-widget-call-action">
 		<a href="https://cuukiemchivuong.com.vn/camnang" class="vivu-widget-btn-call">
 			<img src="https://cuukiemchivuong.com.vn/assets/img/Group84.png">
@@ -352,20 +387,9 @@
 
 	<!-- custom JS -->
 	<script>
-		$(document).ready(function(){
-
-		  // select2
-		  $('.select2-form-control').select2();
-		  // datepicker
-		  $('.datepicker-form-control').datepicker({
-		    orientation: "bottom"
-		  });
-		  // touchspin
-		  $('.touchspin-form-control').TouchSpin({
-		    //
-		  });
-
-		});
+		var vid = document.getElementById("myVideo");
+		vid.autoplay = true;
+		vid.load();
 	</script>
 </body>
 </html>
