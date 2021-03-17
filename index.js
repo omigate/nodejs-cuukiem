@@ -68,6 +68,7 @@ app.get("/event", function (req, res) {
     });
 });
 app.get("/camnang", function (req, res) {
+    
     pool.query("select * from camnang", function (err, result) {
         if (err) {
             res.end();
