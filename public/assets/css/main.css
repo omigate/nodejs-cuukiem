@@ -3208,6 +3208,15 @@ ul.slick-dots li.slick-active { background: url(../img/dot1.png) no-repeat; }
 .pd-44{
   padding: 0 44px !important;
 }
+.apk-dow {
+  width: 126px;
+  background: url(../img/tai-APK1.png) no-repeat;
+  padding: 20px;
+  border: 0;
+  background-size: contain;
+  background-position: center;
+ 
+}
 @media (max-width: 768px) {
   ul.slick-dots{
     display: none !important;
