@@ -3335,11 +3335,9 @@ ul.slick-dots li.slick-active { background: url(../img/dot1.png) no-repeat; }
   }
   .zallo-call {
     position: fixed;
-    bottom: 1px;
-    right: 12px;
+    bottom: 11px;
+    right: 19px;
     z-index: 11;
-    /* width: 60px; */
-    /* height: 70px; */
     display: block;
 }
   
