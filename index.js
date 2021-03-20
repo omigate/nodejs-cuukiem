@@ -68,6 +68,7 @@ app.get("/event", function (req, res) {
     });
 });
 app.get("/camnang", function (req, res) {
+    
     pool.query("select * from camnang", function (err, result) {
         if (err) {
             res.end();
@@ -384,33 +385,45 @@ app.get("/edit/:id", function (req, res) {
     });
 });
 
-app.post("/edit/:id", urlencodedParser, function (req, res) {
-    upload(req, res, function (err) {
-        if (err) {
-            res.send("lỗi");
-        } else {
-            if (req.file == undefined) {
-                res.send("file chưa đc chọn");
-            } else {
-                let sql =
-                    "insert into event(tieude, mota,noidung, image ) values ('" +
-                    req.body.tieude +
-                    "', '" +
-                    req.body.mota +
-                    "','" +
-                    req.body.noidung +
-                    "', '" +
-                    req.file.originalname +
-                    "')";
-                pool.query(sql, function (err, result) {
-                    if (err) {
-                        res.end();
-                        return console.error("error runing query", err);
-                    }
-                    res.redirect("/event/admin");
-                });
-            }
-        }
-    });
-});
+// app.post("/edit/:id", urlencodedParser, function (req, res) {
+//     let id = req.params.id;
+//     upload(req, res, function (err) {
+//         if (err) {
+//             res.send("lỗi");
+            
+//         } else {
+//             if (typeof(req.file) == 'undefined') {
+//                 res.send("file chưa đc chọn");
+//             } else {
+//                 let sql =
+//                     "insert into event(tieude, mota,noidung, image ) values ('" +
+//                     req.body.tieude +
+//                     "', '" +
+//                     req.body.mota +
+//                     "','" +
+//                     req.body.noidung +
+//                     "', '" +
+//                     req.file.originalname +
+//                     "')";
+//                 pool.query(sql, function (err, result) {
+//                     if (err) {
+//                         res.end();
+//                         return console.error("error runing query", err);
+//                     }
+//                     res.redirect("/event/admin");
+//                 });
+//             });
+//         }else{}
+//             pool.query("SELECT * FROM event WHERE id=" + id, function (err, result) {
+//             if (err) {
+//                 res.end();
+//                 return console.error("error runging query", err);
+//             }
+//             res.render("edit", {data: result.rows[0]});
+//             });
+//             });
+//             }
+//         }
+//     });
+// });
 

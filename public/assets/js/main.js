@@ -207,22 +207,11 @@ $(document).ready(function(){
     productPhotoThumbnailSlickOptions
   );
 
-  // home products slick
-  var homeFeaturedProductItemSlickOptions = jQuery.extend(true, {}, itemSlickOptions);
-  homeFeaturedProductItemSlickOptions['slidesToShow'] = 5;   
-  homeFeaturedProductItemSlickOptions['responsive'] = [
-    { breakpoint: 1200, settings: { slidesToShow: 5 } },
-    { breakpoint: 992, settings: { slidesToShow: 4 } },
-    { breakpoint: 768, settings: { slidesToShow: 3 } },
-    { breakpoint: 480, settings: { slidesToShow: 2 } },
-  ];
-  $('.ht-featured-product-card-slick').slick(
-    homeFeaturedProductItemSlickOptions
-  );
+
 
   // home carousel slick
   var homeCarouselItemSlickOptions = jQuery.extend(true, {}, itemSlickOptions);
-  homeCarouselItemSlickOptions['autoplay'] = true;
+  homeCarouselItemSlickOptions['autoplay'] = false;
   homeCarouselItemSlickOptions['autoplaySpeedy'] = 4000;
   homeCarouselItemSlickOptions['dots'] = true;
   homeCarouselItemSlickOptions['fade'] = true;
@@ -231,46 +220,22 @@ $(document).ready(function(){
   $('.ht-home-carousel-card-slick').slick(
     homeCarouselItemSlickOptions
   );
-
-  // home logo brand slick
-  var homeLogoBrandItemSlickOptions = jQuery.extend(true, {}, itemSlickOptions);
-  // homeLogoBrandItemSlickOptions['infinite'] = true;
-  homeLogoBrandItemSlickOptions['autoplay'] = true;
-  homeLogoBrandItemSlickOptions['autoplaySpeed'] = 3000;
-  homeLogoBrandItemSlickOptions['slidesToShow'] = 6;   
-  homeLogoBrandItemSlickOptions['responsive'] = [
-    { breakpoint: 1200, settings: { slidesToShow: 6 } },
-    { breakpoint: 992, settings: { slidesToShow: 5 } },
-    { breakpoint: 768, settings: { slidesToShow: 4 } },
-    { breakpoint: 480, settings: { slidesToShow: 3 } },
-  ];
-  $('.ht-logo-brand-card-slick').slick(
-    homeLogoBrandItemSlickOptions
+  // home carousel slick
+  var homeCarouselItemSlickOptions = jQuery.extend(true, {}, itemSlickOptions);
+  homeCarouselItemSlickOptions['autoplay'] = false;
+  homeCarouselItemSlickOptions['autoplaySpeedy'] = 4000;
+  homeCarouselItemSlickOptions['dots'] = false;
+  homeCarouselItemSlickOptions['fade'] = true;
+  homeCarouselItemSlickOptions['infinite'] = true;
+  homeCarouselItemSlickOptions['slidesToShow'] = 1;
+  $('.ht-home-carousel-card-slick1').slick(
+    homeCarouselItemSlickOptions
   );
 
+  
 
-  // home logo brand slick
-  var homeCategoryNavItemSlickOptions = jQuery.extend(true, {}, itemSlickOptions); 
-  homeCategoryNavItemSlickOptions['variableWidth'] = true;
-  homeCategoryNavItemSlickOptions['infinite'] = true;
-  homeCategoryNavItemSlickOptions['slidesToScroll'] = 4;
-  $('.ht-category-title-item-slick').slick(
-    homeCategoryNavItemSlickOptions
-  );
 
-  // home logo brand slick
-  var homeFeedbackSlickOptions = jQuery.extend(true, {}, itemSlickOptions);
-  homeFeedbackSlickOptions['slidesToScroll'] = 1;
-  homeFeedbackSlickOptions['slidesToShow'] = 3;  
-  homeFeedbackSlickOptions['responsive'] = [
-    { breakpoint: 1200, settings: { slidesToShow: 3 } },
-    { breakpoint: 992, settings: { slidesToShow: 3 } },
-    { breakpoint: 768, settings: { slidesToShow: 2 } },
-    { breakpoint: 480, settings: { slidesToShow: 1 } },
-  ];
-  $('.ht-feedback-02-slick').slick(
-    homeFeedbackSlickOptions
-  );
+
 
 
 
