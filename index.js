@@ -44,7 +44,7 @@ app.get("/", function (req, res) {
         try {
             const dataEvent = await pool.query("select * from event");
             const dataBangPhai = await pool.query("select * from bangphai");
-            const dataNews = await pool.query("select * from news");
+            const dataNews = await pool.query("select * from news ORDER BY tieude");
             const dataCamNang = await pool.query("select * from camnang");
             return {dataEvent, dataBangPhai, dataNews, dataCamNang};
         } catch (err) {
