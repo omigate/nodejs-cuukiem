@@ -42,10 +42,11 @@ app.get("/healthcheck", (req, res) => {
 app.get("/", function (req, res) {
     async function demoAwait() {
         try {
-            const dataEvent = await pool.query("select * from event");
-            const dataBangPhai = await pool.query("select * from bangphai");
-            const dataNews = await pool.query("select * from news ORDER BY tieude");
-            const dataCamNang = await pool.query("select * from camnang");
+            const dataEvent = await pool.query("select * from event ORDER BY id desc");
+            const dataBangPhai = await pool.query("select * from bangphai ORDER BY id desc");
+            const dataNews = await pool.query("select * from news ORDER BY id desc");
+            const dataCamNang = await pool.query("select * from camnang ORDER BY id desc");
+            
             return {dataEvent, dataBangPhai, dataNews, dataCamNang};
         } catch (err) {
             console.log(err);
@@ -67,6 +68,7 @@ app.get("/event", function (req, res) {
         res.render("event", {data: result});
     });
 });
+
 app.get("/camnang", function (req, res) {
     
     pool.query("select * from camnang", function (err, result) {
@@ -385,45 +387,45 @@ app.get("/edit/:id", function (req, res) {
     });
 });
 
-// app.post("/edit/:id", urlencodedParser, function (req, res) {
-//     let id = req.params.id;
-//     upload(req, res, function (err) {
-//         if (err) {
-//             res.send("lỗi");
-            
-//         } else {
-//             if (typeof(req.file) == 'undefined') {
-//                 res.send("file chưa đc chọn");
-//             } else {
-//                 let sql =
-//                     "insert into event(tieude, mota,noidung, image ) values ('" +
-//                     req.body.tieude +
-//                     "', '" +
-//                     req.body.mota +
-//                     "','" +
-//                     req.body.noidung +
-//                     "', '" +
-//                     req.file.originalname +
-//                     "')";
-//                 pool.query(sql, function (err, result) {
-//                     if (err) {
-//                         res.end();
-//                         return console.error("error runing query", err);
-//                     }
-//                     res.redirect("/event/admin");
-//                 });
-//             });
-//         }else{}
-//             pool.query("SELECT * FROM event WHERE id=" + id, function (err, result) {
-//             if (err) {
-//                 res.end();
-//                 return console.error("error runging query", err);
-//             }
-//             res.render("edit", {data: result.rows[0]});
-//             });
-//             });
-//             }
-//         }
-//     });
-// });
+app.post("/edit/:id", urlencodedParser, function (req, res) {
+    let id = req.params.id;
+        upload(req, res, function (err) {
+        if (err) {
+            res.send("lỗi");
+        } else {
+            if (typeof(req.file) == 'undefined') {
+pool.query(function(err, client, done){
+    if(err){
+        return console.error('error fetching client from pool', err);
+    }
+    client.query("UPDATE event set tieude ='"+req.body.tieude+"', mota='"+req.body.mota+"', noiddung='"+req.body.tieude+"' WHERE id="+id, 
+    function(err, result){
+        done();
+        if(err){
+            res.end();
+            return console.console.error('error rungning query',err);
+        }
+        res.redirect("/event/admin");
+    });
+});  
+}
 
+        else{
+           pool.connect(function(err, client, done){
+               if(err){
+                return console.error('error fetching client from pool', err);
+               }
+               client.query("UPDATE event set tieude='"+req.body.tieude+"', mota='"+req.body.mota+"',image='"+req.
+               file.originalname+"' WHERE id="+id, function(err,result) {
+                done();
+                if(err){
+                    res.end();
+                    return console.error('error running query', err);
+                }
+                res.redirect("/event/admin");
+               });
+           });
+        }
+    }
+});
+});

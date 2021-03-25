@@ -3301,7 +3301,7 @@ ul.slick-dots li.slick-active { background: url(../img/dot1.png) no-repeat; }
     height: 955px;
     background: url(../img/back-2.png) no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: 144% 100%;
     padding-top: 145px !important;
     overflow: hidden;
 
